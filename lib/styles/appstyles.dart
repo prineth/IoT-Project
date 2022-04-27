@@ -11,4 +11,17 @@ class AppStyles {
 
     
   );
+
+  static TextStyle whiteMenuTexts = const TextStyle(
+    color: Colors.white
+  );
+
+  static TextStyle whiteSizedTexts(double fontSize){
+    return TextStyle(fontSize: fontSize, color: Colors.white);
+  }
+
+  static TextStyle whiteSizedColorTexts(double fontSize, Color color){
+    return TextStyle(fontSize: fontSize, color: color);
+  }
+
 }
