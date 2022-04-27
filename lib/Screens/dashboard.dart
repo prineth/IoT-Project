@@ -15,6 +15,9 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   double tempurature = 50.0;
+  double humidity = 0;
+  double lux = 0;
+  double noise = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +136,7 @@ class _DashboardState extends State<Dashboard> {
                               'assets/images/dashboard/humidity.png'),
                         ),
 
-                        // Temperature col
+                        // Humidity col
 
                         Expanded(
                           child: Container(
@@ -142,14 +145,14 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Temperature',
+                                  'Humidity',
                                   style: AppStyles.whiteSizedTexts(20),
                                 ),
                                 Text(
-                                  (tempurature > 40 ? 'Hot' : 'Normal'),
+                                  (humidity > 40 ? 'Bad Condition' : 'Normal'),
                                   style: AppStyles.whiteSizedColorTexts(
                                       15,
-                                      tempurature > 40
+                                      humidity > 40
                                           ? Colors.red
                                           : Colors.green),
                                 ),
@@ -168,17 +171,20 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  '$tempurature' + '°C',
+                                  '$tempurature' + 'g.kg-¹',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 30,
                                   ),
                                 ),
-                                const Text(
-                                  '10s ago',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6.0),
+                                  child: const Text(
+                                    '10s ago',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -209,7 +215,7 @@ class _DashboardState extends State<Dashboard> {
                               Image.asset('assets/images/dashboard/noise.png'),
                         ),
 
-                        // Temperature col
+                        // Noise col
 
                         Expanded(
                           child: Container(
@@ -218,14 +224,14 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Temperature',
+                                  'Noise',
                                   style: AppStyles.whiteSizedTexts(20),
                                 ),
                                 Text(
-                                  (tempurature > 40 ? 'Hot' : 'Normal'),
+                                  (noise > 20 && noise < 80.3  ? 'Bad Conditon' : 'Normal'),
                                   style: AppStyles.whiteSizedColorTexts(
                                       15,
-                                      tempurature > 40
+                                        noise > 20 && noise < 80.3
                                           ? Colors.red
                                           : Colors.green),
                                 ),
@@ -244,7 +250,7 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  '$tempurature' + '°C',
+                                  '$tempurature' + 'dB',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 30,
@@ -285,7 +291,7 @@ class _DashboardState extends State<Dashboard> {
                               'assets/images/dashboard/lightbulb.png'),
                         ),
 
-                        // Temperature col
+                        // Lux col
 
                         Expanded(
                           child: Container(
@@ -294,16 +300,16 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Temperature',
+                                  'Lux',
                                   style: AppStyles.whiteSizedTexts(20),
                                 ),
                                 Text(
-                                  (tempurature > 40 ? 'Hot' : 'Normal'),
+                                  (lux > 500 && lux < 1000 ? 'Normal' : 'Bad Condition' ),
                                   style: AppStyles.whiteSizedColorTexts(
                                       15,
-                                      tempurature > 40
-                                          ? Colors.red
-                                          : Colors.green),
+                                      lux > 500 && lux < 1000
+                                          ? Colors.green
+                                          : Colors.red),
                                 ),
                               ],
                             ),
@@ -320,7 +326,7 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  '$tempurature °C',
+                                  '$tempurature lux',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 30,
