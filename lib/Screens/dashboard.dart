@@ -38,10 +38,8 @@ class _DashboardState extends State<Dashboard> {
                       side:
                           const BorderSide(color: Color(0xff50BBF1), width: 2),
                     ),
-                    // shadowColor: Colors.blueAccent,
                     color: const Color(0xFF263238),
                     child: Row(
-                      // mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
                           width: 100,
@@ -80,6 +78,7 @@ class _DashboardState extends State<Dashboard> {
                           child: Container(
                             // color: Colors.amber,
                             padding: const EdgeInsets.only(right: 20.0),
+
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -122,8 +121,8 @@ class _DashboardState extends State<Dashboard> {
                         Container(
                           width: 100,
                           height: 52,
-                          child:
-                              Image.asset('assets/images/dashboard/humidity.png'),
+                          child: Image.asset(
+                              'assets/images/dashboard/humidity.png'),
                         ),
 
                         // Temperature col
@@ -274,8 +273,8 @@ class _DashboardState extends State<Dashboard> {
                         Container(
                           width: 100,
                           height: 52,
-                          child:
-                              Image.asset('assets/images/dashboard/lightbulb.png'),
+                          child: Image.asset(
+                              'assets/images/dashboard/lightbulb.png'),
                         ),
 
                         // Temperature col
