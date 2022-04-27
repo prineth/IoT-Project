@@ -3,6 +3,7 @@ import 'package:myapp/Screens/login.dart';
 import 'package:myapp/Screens/SettingPage.dart';
 import 'package:myapp/Screens/PrivacyPolicy.dart';
 import 'package:myapp/Screens/temperature.dart';
+import 'package:myapp/components/bottomNav.dart';
 import 'package:myapp/styles/appstyles.dart';
 
 class Dashboard extends StatefulWidget {
@@ -13,7 +14,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  double tempurature = 15.0;
+  double tempurature = 50.0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,69 +40,76 @@ class _DashboardState extends State<Dashboard> {
                           const BorderSide(color: Color(0xff50BBF1), width: 2),
                     ),
                     color: const Color(0xFF263238),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 52,
-                          child:
-                              Image.asset('assets/images/dashboard/temp.png'),
-                        ),
+                    // ignore: unnecessary_new
+                    child: new InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Temperature()));
+                      },
+                      child: Row(
+                        // mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 52,
+                            child:
+                                Image.asset('assets/images/dashboard/temp.png'),
+                          ),
 
-                        // Temperature col
+                          // Temperature col
 
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Temperature',
-                                  style: AppStyles.whiteSizedTexts(20),
-                                ),
-                                Text(
-                                  (tempurature > 40 ? 'Hot' : 'Normal'),
-                                  style: AppStyles.whiteSizedColorTexts(
-                                      15,
-                                      tempurature > 40
-                                          ? Colors.red
-                                          : Colors.green),
-                                ),
-                              ],
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Temperature',
+                                    style: AppStyles.whiteSizedTexts(20),
+                                  ),
+                                  Text(
+                                    (tempurature > 40 ? 'Hot' : 'Normal'),
+                                    style: AppStyles.whiteSizedColorTexts(
+                                        15,
+                                        tempurature > 40
+                                            ? Colors.red
+                                            : Colors.green),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
 
-                        //values and response time dynamic content
-                        Expanded(
-                          child: Container(
-                            // color: Colors.amber,
-                            padding: const EdgeInsets.only(right: 20.0),
-
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '$tempurature' + '°C',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
+                          //values and response time dynamic content
+                          Expanded(
+                            child: Container(
+                              // color: Colors.amber,
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '$tempurature' + '°C',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                    ),
                                   ),
-                                ),
-                                const Text(
-                                  '10s ago',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
+                                  const Text(
+                                    '10s ago',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
