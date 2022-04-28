@@ -1,19 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:myapp/components/bottomNav.dart';
-
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class Temperature extends StatefulWidget {
   @override
   State<Temperature> createState() => _TemperatureState();
-
-  final List<Color> gradientColors = [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
-  ];
 }
 
 class _TemperatureState extends State<Temperature> {
@@ -23,7 +16,7 @@ class _TemperatureState extends State<Temperature> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Temperature'),
+          title: const Text('Temperature'),
           backgroundColor: const Color(0xFF171724),
         ),
         body: SingleChildScrollView(
@@ -76,8 +69,9 @@ class _TemperatureState extends State<Temperature> {
                         pointers: <GaugePointer>[
                           NeedlePointer(
                             value: tempurature,
-                            needleColor: Color.fromARGB(255, 255, 255, 255),
-                            knobStyle: KnobStyle(
+                            needleColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            knobStyle: const KnobStyle(
                               knobRadius: 0.05,
                               borderColor: Color.fromARGB(255, 255, 255, 255),
                               borderWidth: 0.02,
@@ -86,12 +80,29 @@ class _TemperatureState extends State<Temperature> {
                         ],
                         annotations: <GaugeAnnotation>[
                           GaugeAnnotation(
-                              widget: Container(
-                                  child: Text('$tempurature °C',
+                              widget: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: const Text(
+                                      'tempurature',
                                       style: TextStyle(
                                           color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.normal),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      '$tempurature °C',
+                                      style: const TextStyle(
+                                          color: Colors.white,
                                           fontSize: 25,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
                               angle: 90,
                               positionFactor: 0.5)
                         ],
@@ -100,19 +111,7 @@ class _TemperatureState extends State<Temperature> {
                   ),
                 ),
               ),
-              Container(
-                child: Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32),
-                  ),
-                  color: const Color(0xff020227),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    // child: LineChartWidget(),
-                  ),
-                ),
-              )
+              Container()
             ],
           ),
         ),
