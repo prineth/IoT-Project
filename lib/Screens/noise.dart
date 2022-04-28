@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class Temperature extends StatefulWidget {
+class Noise extends StatefulWidget {
   @override
-  State<Temperature> createState() => _TemperatureState();
+  State<Noise> createState() => _TemperatureState();
 }
 
-class _TemperatureState extends State<Temperature> {
-  double tempurature = 38.0;
+class _TemperatureState extends State<Noise> {
+  double noise = 38.0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Temperature'),
+          title: const Text('Noise'),
           backgroundColor: const Color(0xFF171724),
         ),
         body: SingleChildScrollView(
@@ -28,8 +28,8 @@ class _TemperatureState extends State<Temperature> {
                     animationDuration: 1700,
                     axes: <RadialAxis>[
                       RadialAxis(
-                        minimum: 16,
-                        maximum: 45,
+                        minimum: 10,
+                        maximum: 100,
                         majorTickStyle: const MajorTickStyle(
                             length: 0.03,
                             lengthUnit: GaugeSizeUnit.factor,
@@ -46,20 +46,20 @@ class _TemperatureState extends State<Temperature> {
                         ),
                         ranges: <GaugeRange>[
                           GaugeRange(
-                              startValue: 16,
-                              endValue: 22,
+                              startValue: 10,
+                              endValue: 65,
                               color: Colors.green,
                               startWidth: 10,
                               endWidth: 10),
                           GaugeRange(
-                              startValue: 22,
-                              endValue: 30,
+                              startValue: 65,
+                              endValue: 80,
                               color: Colors.orange,
                               startWidth: 10,
                               endWidth: 10),
                           GaugeRange(
-                              startValue: 30,
-                              endValue: 45,
+                              startValue: 80,
+                              endValue: 100,
                               color: Colors.red,
                               startWidth: 10,
                               endWidth: 10)
@@ -67,7 +67,7 @@ class _TemperatureState extends State<Temperature> {
                         ],
                         pointers: <GaugePointer>[
                           NeedlePointer(
-                            value: tempurature,
+                            value: noise,
                             needleColor:
                                 const Color.fromARGB(255, 255, 255, 255),
                             knobStyle: const KnobStyle(
@@ -84,7 +84,7 @@ class _TemperatureState extends State<Temperature> {
                                 children: [
                                   Container(
                                     child: const Text(
-                                      'tempurature',
+                                      'Noise Level',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,
@@ -93,7 +93,7 @@ class _TemperatureState extends State<Temperature> {
                                   ),
                                   Container(
                                     child: Text(
-                                      '$tempurature °C',
+                                      '$noise dB',
                                       style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 25,

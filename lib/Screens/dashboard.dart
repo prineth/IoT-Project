@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Screens/humidity.dart';
 import 'package:myapp/Screens/login.dart';
 import 'package:myapp/Screens/SettingPage.dart';
 import 'package:myapp/Screens/PrivacyPolicy.dart';
+import 'package:myapp/Screens/lux.dart';
+import 'package:myapp/Screens/noise.dart';
 import 'package:myapp/Screens/temperature.dart';
 import 'package:myapp/components/bottomNav.dart';
 import 'package:myapp/styles/appstyles.dart';
@@ -119,81 +122,173 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: 120,
                   child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      side:
-                          const BorderSide(color: Color(0xff50BBF1), width: 2),
-                    ),
-                    // shadowColor: Colors.blueAccent,
-                    color: const Color(0xFF263238),
-                    child: Row(
-                      // mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 52,
-                          child: Image.asset(
-                              'assets/images/dashboard/humidity.png'),
-                        ),
-
-                        // Humidity col
-
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Humidity',
-                                  style: AppStyles.whiteSizedTexts(20),
-                                ),
-                                Text(
-                                  (humidity > 40 ? 'Bad Condition' : 'Normal'),
-                                  style: AppStyles.whiteSizedColorTexts(
-                                      15,
-                                      humidity > 40
-                                          ? Colors.red
-                                          : Colors.green),
-                                ),
-                              ],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: const BorderSide(
+                            color: Color(0xff50BBF1), width: 2),
+                      ),
+                      // shadowColor: Colors.blueAccent,
+                      color: const Color(0xFF263238),
+                      // ignore: unnecessary_new
+                      child: new InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Humidity()));
+                        },
+                        child: Row(
+                          // mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 52,
+                              child: Image.asset(
+                                  'assets/images/dashboard/humidity.png'),
                             ),
-                          ),
-                        ),
 
-                        //values and response time dynamic content
-                        Expanded(
-                          child: Container(
-                            // color: Colors.amber,
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '$tempurature' + 'g.kg-¹',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 6.0),
-                                  child: const Text(
-                                    '10s ago',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
+                            // Humidity col
+
+                            Expanded(
+                              child: Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Humidity',
+                                      style: AppStyles.whiteSizedTexts(20),
                                     ),
-                                  ),
+                                    Text(
+                                      (humidity > 40
+                                          ? 'Bad Condition'
+                                          : 'Normal'),
+                                      style: AppStyles.whiteSizedColorTexts(
+                                          15,
+                                          humidity > 40
+                                              ? Colors.red
+                                              : Colors.green),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+
+                            //values and response time dynamic content
+                            Expanded(
+                              child: Container(
+                                // color: Colors.amber,
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '$tempurature' + 'g.kg-¹',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 6.0),
+                                      child: const Text(
+                                        '10s ago',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                ),
+                SizedBox(
+                  height: 120,
+                  child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: const BorderSide(
+                            color: Color(0xff50BBF1), width: 2),
+                      ),
+                      // shadowColor: Colors.blueAccent,
+                      color: const Color(0xFF263238),
+                      // ignore: unnecessary_new
+                      child: new InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Noise()));
+                        },
+                        child: Row(
+                          // mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 52,
+                              child: Image.asset(
+                                  'assets/images/dashboard/noise.png'),
+                            ),
+
+                            // Noise col
+
+                            Expanded(
+                              child: Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Noise',
+                                      style: AppStyles.whiteSizedTexts(20),
+                                    ),
+                                    Text(
+                                      (noise > 20 && noise < 80.3
+                                          ? 'Bad Conditon'
+                                          : 'Normal'),
+                                      style: AppStyles.whiteSizedColorTexts(
+                                          15,
+                                          noise > 20 && noise < 80.3
+                                              ? Colors.red
+                                              : Colors.green),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            //values and response time dynamic content
+                            Expanded(
+                              child: Container(
+                                // color: Colors.amber,
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '$tempurature' + 'dB',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                    const Text(
+                                      '10s ago',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
                 ),
                 SizedBox(
                   height: 120,
@@ -205,85 +300,13 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     // shadowColor: Colors.blueAccent,
                     color: const Color(0xFF263238),
-                    child: Row(
-                      // mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 52,
-                          child:
-                              Image.asset('assets/images/dashboard/noise.png'),
-                        ),
-
-                        // Noise col
-
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Noise',
-                                  style: AppStyles.whiteSizedTexts(20),
-                                ),
-                                Text(
-                                  (noise > 20 && noise < 80.3
-                                      ? 'Bad Conditon'
-                                      : 'Normal'),
-                                  style: AppStyles.whiteSizedColorTexts(
-                                      15,
-                                      noise > 20 && noise < 80.3
-                                          ? Colors.red
-                                          : Colors.green),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        //values and response time dynamic content
-                        Expanded(
-                          child: Container(
-                            // color: Colors.amber,
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '$tempurature' + 'dB',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                const Text(
-                                  '10s ago',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 120,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      side:
-                          const BorderSide(color: Color(0xff50BBF1), width: 2),
-                    ),
-                    // shadowColor: Colors.blueAccent,
-                    color: const Color(0xFF263238),
-                    child: Row(
+                                          // ignore: unnecessary_new
+                                          child: new InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Lux()));
+                        },
+                                            child: Row(
                       // mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
@@ -349,6 +372,7 @@ class _DashboardState extends State<Dashboard> {
                         )
                       ],
                     ),
+                        )
                   ),
                 ),
               ],
