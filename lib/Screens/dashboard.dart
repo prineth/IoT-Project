@@ -228,10 +228,12 @@ class _DashboardState extends State<Dashboard> {
                                   style: AppStyles.whiteSizedTexts(20),
                                 ),
                                 Text(
-                                  (noise > 20 && noise < 80.3  ? 'Bad Conditon' : 'Normal'),
+                                  (noise > 20 && noise < 80.3
+                                      ? 'Bad Conditon'
+                                      : 'Normal'),
                                   style: AppStyles.whiteSizedColorTexts(
                                       15,
-                                        noise > 20 && noise < 80.3
+                                      noise > 20 && noise < 80.3
                                           ? Colors.red
                                           : Colors.green),
                                 ),
@@ -304,7 +306,9 @@ class _DashboardState extends State<Dashboard> {
                                   style: AppStyles.whiteSizedTexts(20),
                                 ),
                                 Text(
-                                  (lux > 500 && lux < 1000 ? 'Normal' : 'Bad Condition' ),
+                                  (lux > 500 && lux < 1000
+                                      ? 'Normal'
+                                      : 'Bad Condition'),
                                   style: AppStyles.whiteSizedColorTexts(
                                       15,
                                       lux > 500 && lux < 1000
