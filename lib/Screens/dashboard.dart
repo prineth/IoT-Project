@@ -94,7 +94,7 @@ class _DashboardState extends State<Dashboard> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '$tempurature' + '°C',
+                                    '$tempurature °C',
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 30,
