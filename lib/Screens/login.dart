@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Screens/dashboard.dart';
 import 'package:myapp/styles/appstyles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -10,7 +11,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //text controllers
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   bool _isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -46,9 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 height: 100,
                 // color: Colors.blue,
-                child: const TextField(
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
+                child: TextField(
+                  controller: _emailController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: Colors.white, width: 1.0)),
@@ -65,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 100,
                 // color: Colors.blue,
                 child: TextField(
+                  controller: _passwordController,
                   style: TextStyle(color: Colors.white),
                   obscureText: _isObscure,
                   decoration: InputDecoration(
@@ -99,10 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Dashboard()));
-                        },
+                        onPressed: signIn,
                         child: Text('Login'),
                         style: ElevatedButton.styleFrom(
                           shape: StadiumBorder(),

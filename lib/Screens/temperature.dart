@@ -84,7 +84,7 @@ class _TemperatureState extends State<Temperature> {
                                 children: [
                                   Container(
                                     child: const Text(
-                                      'tempurature',
+                                      'Tempurature',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,

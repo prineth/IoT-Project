@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/main_page.dart';
 import 'package:myapp/styles/appstyles.dart';
 import 'Screens/login.dart';
+
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: LoginScreen(),
+      home: MainPage(),
     );
   }
 }
