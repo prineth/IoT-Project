@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/main_page.dart';
 import 'package:myapp/styles/appstyles.dart';
 import 'Screens/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 void main(List<String> args) {
