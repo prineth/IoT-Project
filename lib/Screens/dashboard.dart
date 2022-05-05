@@ -400,12 +400,12 @@ class _DashboardState extends State<Dashboard> {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => PrivacyPolicy()));
         break;
-      case 2:
-
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => LoginScreen()),
-            (route) => false);
-        break;
+      // case 2:
+      //
+      //   Navigator.of(context).pushAndRemoveUntil(
+      //       MaterialPageRoute(builder: (context) => LoginScreen()),
+      //       (route) => false);
+      //   break;
     }
   }
 
