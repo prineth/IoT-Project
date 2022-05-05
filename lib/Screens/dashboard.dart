@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/Screens/humidity.dart';
 import 'package:myapp/Screens/login.dart';
@@ -24,6 +25,8 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -37,6 +40,11 @@ class _DashboardState extends State<Dashboard> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                const SizedBox(height: 20),
+                Text(
+                    "Welcome: " + user.email!,
+                    style: const TextStyle(fontSize:15, fontWeight: FontWeight.normal,color: Colors.white),
+                ),
                 SizedBox(
                   height: 120,
                   child: Card(
@@ -219,8 +227,8 @@ class _DashboardState extends State<Dashboard> {
                       // ignore: unnecessary_new
                       child: new InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Noise()));
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Noise()));
                         },
                         child: Row(
                           // mainAxisSize: MainAxisSize.min,
@@ -293,87 +301,86 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: 120,
                   child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      side:
-                          const BorderSide(color: Color(0xff50BBF1), width: 2),
-                    ),
-                    // shadowColor: Colors.blueAccent,
-                    color: const Color(0xFF263238),
-                                          // ignore: unnecessary_new
-                                          child: new InkWell(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: const BorderSide(
+                            color: Color(0xff50BBF1), width: 2),
+                      ),
+                      // shadowColor: Colors.blueAccent,
+                      color: const Color(0xFF263238),
+                      // ignore: unnecessary_new
+                      child: new InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Lux()));
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Lux()));
                         },
-                                            child: Row(
-                      // mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 52,
-                          child: Image.asset(
-                              'assets/images/dashboard/lightbulb.png'),
-                        ),
-
-                        // Lux col
-
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Lux',
-                                  style: AppStyles.whiteSizedTexts(20),
-                                ),
-                                Text(
-                                  (lux > 500 && lux < 1000
-                                      ? 'Normal'
-                                      : 'Bad Condition'),
-                                  style: AppStyles.whiteSizedColorTexts(
-                                      15,
-                                      lux > 500 && lux < 1000
-                                          ? Colors.green
-                                          : Colors.red),
-                                ),
-                              ],
+                        child: Row(
+                          // mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 52,
+                              child: Image.asset(
+                                  'assets/images/dashboard/lightbulb.png'),
                             ),
-                          ),
-                        ),
 
-                        //values and response time dynamic content
-                        Expanded(
-                          child: Container(
-                            // color: Colors.amber,
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '$tempurature lux',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                  ),
+                            // Lux col
+
+                            Expanded(
+                              child: Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Lux',
+                                      style: AppStyles.whiteSizedTexts(20),
+                                    ),
+                                    Text(
+                                      (lux > 500 && lux < 1000
+                                          ? 'Normal'
+                                          : 'Bad Condition'),
+                                      style: AppStyles.whiteSizedColorTexts(
+                                          15,
+                                          lux > 500 && lux < 1000
+                                              ? Colors.green
+                                              : Colors.red),
+                                    ),
+                                  ],
                                 ),
-                                const Text(
-                                  '10s ago',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                        )
-                  ),
+
+                            //values and response time dynamic content
+                            Expanded(
+                              child: Container(
+                                // color: Colors.amber,
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '$tempurature lux',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                    const Text(
+                                      '10s ago',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
                 ),
               ],
             ),
@@ -394,6 +401,7 @@ class _DashboardState extends State<Dashboard> {
             .push(MaterialPageRoute(builder: (context) => PrivacyPolicy()));
         break;
       case 2:
+
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => LoginScreen()),
             (route) => false);
@@ -419,6 +427,7 @@ class _DashboardState extends State<Dashboard> {
             )),
         const PopupMenuDivider(),
         PopupMenuItem<int>(
+          onTap: ()=>FirebaseAuth.instance.signOut(),
             value: 2,
             child: Row(
               children: [
