@@ -1,7 +1,12 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:http/http.dart' as http;
+import 'package:firebase_core/firebase_core.dart';
+import '../firebase_options.dart';
+
 
 class Temperature extends StatefulWidget {
   @override
@@ -9,7 +14,11 @@ class Temperature extends StatefulWidget {
 }
 
 class _TemperatureState extends State<Temperature> {
+
   double tempurature = 38.0;
+  
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

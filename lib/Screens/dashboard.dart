@@ -9,6 +9,10 @@ import 'package:myapp/Screens/noise.dart';
 import 'package:myapp/Screens/temperature.dart';
 import 'package:myapp/components/bottomNav.dart';
 import 'package:myapp/styles/appstyles.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key? key}) : super(key: key);
