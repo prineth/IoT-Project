@@ -13,7 +13,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 class Dashboard extends StatefulWidget {
   Dashboard({Key? key}) : super(key: key);
 
@@ -23,9 +22,9 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   double tempurature = 50.0;
-  double humidity = 0;
-  double lux = 0;
-  double noise = 0;
+  double humidity = 38.0;
+  double lux = 1000.0;
+  double noise = 38.0;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +45,11 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                    "Welcome: " + user.email!,
-                    style: const TextStyle(fontSize:15, fontWeight: FontWeight.normal,color: Colors.white),
+                  "Welcome: " + user.email!,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white),
                 ),
                 SizedBox(
                   height: 120,
@@ -194,15 +196,15 @@ class _DashboardState extends State<Dashboard> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      '$tempurature' + 'g.kg-¹',
+                                      '$humidity' + '%',
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 30,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 6.0),
-                                      child: const Text(
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 6.0),
+                                      child: Text(
                                         '10s ago',
                                         style: TextStyle(
                                           color: Colors.white,
@@ -365,7 +367,7 @@ class _DashboardState extends State<Dashboard> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      '$tempurature lux',
+                                      '$lux lux',
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 30,
@@ -431,7 +433,7 @@ class _DashboardState extends State<Dashboard> {
             )),
         const PopupMenuDivider(),
         PopupMenuItem<int>(
-          onTap: ()=>FirebaseAuth.instance.signOut(),
+            onTap: () => FirebaseAuth.instance.signOut(),
             value: 2,
             child: Row(
               children: [
